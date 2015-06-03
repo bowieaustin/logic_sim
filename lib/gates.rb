@@ -3,18 +3,23 @@
 module Gate
     attr_accessor :inputs
     attr_accessor :output
+    
+    def initialize
+        @inputs = Array.new
+    end
 
     def eval
         raise "Eval not implemented!"
     end
     
     def raise(error_message)
-        super self.class.name + ": " + error_message
+        super "#{self.class.name}: #{error_message}" 
     end
 end
 
 class And
     include Gate
+
     def eval
         if inputs.size < 2
             raise "0 or 1 inputs"
@@ -30,6 +35,7 @@ end
 
 class Nand
     include Gate
+
     def eval
         if inputs.size < 2
             raise "0 or 1 inputs"
@@ -45,6 +51,7 @@ end
 
 class Or
     include Gate
+
     def eval
         if inputs.size < 2
             raise "0 or 1 inputs"
@@ -60,6 +67,7 @@ end
 
 class Nor
     include Gate
+
     def eval
         if inputs.size < 2
             raise "0 or 1 inputs"
@@ -75,6 +83,7 @@ end
 
 class Xor
     include Gate 
+
     def eval
         if inputs.size < 2
             raise "0 or 1 inputs"
@@ -97,6 +106,7 @@ end
 
 class Xnor
     include Gate
+
     def eval
         if inputs.size < 2
             raise "0 or 1 inputs"
@@ -119,8 +129,9 @@ end
 
 class Not
     include Gate
+
     def eval
-        if inputs.size > 1 || inputs.size < 0
+        if inputs.size != 1
             raise "#{inputs.size} inputs"
         end
         if inputs[0] == 0

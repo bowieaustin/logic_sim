@@ -84,4 +84,11 @@ class TestGates < Test::Unit::TestCase
         not_gate.inputs = [1]
         assert_equal(not_gate.eval, 0)
     end
+    
+    def test_exceptions
+        gates = [And.new,Nand.new,Or.new,Nor.new,Xor.new,Xnor.new,Not.new]
+        gates.each do |gate|
+            assert_raise(RuntimeError){gate.eval}
+        end
+    end 
 end
