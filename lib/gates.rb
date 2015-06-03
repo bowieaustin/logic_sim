@@ -18,6 +18,7 @@ class And
     def eval
         if inputs.size < 2
             raise "0 or 1 inputs"
+        end
         inputs.each do |input|
             if input == 0
                 return 0
@@ -73,7 +74,7 @@ class Nor
 end
 
 class Xor
-    include Gate
+    include Gate 
     def eval
         if inputs.size < 2
             raise "0 or 1 inputs"
@@ -108,6 +109,7 @@ class Xnor
             else
                 num_high = num_high+1
             end
+        end
         if num_high == num_low
             return 0
         end
