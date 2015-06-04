@@ -1,11 +1,31 @@
 #!/usr/bin/env ruby
 
 class Gate
-    attr_accessor :inputs
-    attr_accessor :output
+    attr_reader :inputs
+    attr_reader :outputs
     
     def initialize
         @inputs = Array.new
+    end
+
+    def add_input(input)
+        @inputs.push input
+        if input.respond_to? :add_output
+            input.add_output self
+        end
+    end
+
+    def inputs=(inputs)
+        inputs.each do |input|
+            @inputs.push input
+            if input.respond_to? :add_output
+                input.add_output self
+            end
+        end
+    end
+
+    def add_output(gate)
+        @outputs.push(gate)
     end
 
     def evaluate
@@ -146,7 +166,7 @@ class Not<Gate
             raise "#{inputs.size} inputs"
         end
         if inputs[0].respond_to?("evaluate")
-           inputs[0] = input[0].evaluate
+           input[0] = input.evaluate
         end
         if inputs[0] == 0
             return 1
