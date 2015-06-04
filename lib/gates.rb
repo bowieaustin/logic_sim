@@ -16,6 +16,7 @@ class Gate
     end
 
     def inputs=(inputs)
+        @inputs = Array.new
         inputs.each do |input|
             @inputs.push input
             if input.respond_to? :add_output
