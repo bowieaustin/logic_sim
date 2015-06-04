@@ -115,22 +115,22 @@ class Xor<Gate
         if inputs.size < 2
             raise "0 or 1 inputs"
         end
-        num_high = 0
-        num_low = 0
+        current_val = -1
         inputs.each do |input|
             if input.respond_to?("evaluate")
                 input = input.evaluate
             end
-            if input == 0
-                num_low = num_low+1
+            if current_val == -1
+                current_val = input
+                next
+            end
+            if input == current_val
+                current_val = 0
             else
-                num_high = num_high+1
+                current_val = 1
             end
         end
-        if num_high == num_low
-            return 1
-        end
-        return 0
+        return current_val
     end
 end
 
@@ -140,19 +140,22 @@ class Xnor<Gate
         if inputs.size < 2
             raise "0 or 1 inputs"
         end
-        num_high = 0
-        num_low = 0
+        current_val = -1
         inputs.each do |input|
             if input.respond_to?("evaluate")
                 input = input.evaluate
             end
-            if input == 0
-                num_low = num_low+1
+            if current_val == -1
+                current_val = input
+                next
+            end
+            if input == current_val
+                current_val = 0
             else
-                num_high = num_high+1
+                current_val = 1
             end
         end
-        if num_high == num_low
+        if current_val == 1
             return 0
         end
         return 1
