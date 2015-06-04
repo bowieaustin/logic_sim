@@ -8,7 +8,7 @@ class Gate
         @inputs = Array.new
     end
 
-    def eval
+    def evaluate
         raise "Eval not implemented!"
     end
     
@@ -19,7 +19,7 @@ end
 
 class And<Gate
 
-    def eval
+    def evaluate
         if inputs.size < 2
             raise "0 or 1 inputs"
         end
@@ -34,7 +34,7 @@ end
 
 class Nand<Gate
 
-    def eval
+    def evaluate
         if inputs.size < 2
             raise "0 or 1 inputs"
         end
@@ -49,7 +49,7 @@ end
 
 class Or<Gate
 
-    def eval
+    def evaluate
         if inputs.size < 2
             raise "0 or 1 inputs"
         end
@@ -64,7 +64,7 @@ end
 
 class Nor<Gate
 
-    def eval
+    def evaluate
         if inputs.size < 2
             raise "0 or 1 inputs"
         end
@@ -79,7 +79,7 @@ end
 
 class Xor<Gate
 
-    def eval
+    def evaluate
         if inputs.size < 2
             raise "0 or 1 inputs"
         end
@@ -101,7 +101,7 @@ end
 
 class Xnor<Gate
 
-    def eval
+    def evaluate
         if inputs.size < 2
             raise "0 or 1 inputs"
         end
@@ -123,7 +123,7 @@ end
 
 class Not<Gate
 
-    def eval
+    def evaluate
         if inputs.size != 1
             raise "#{inputs.size} inputs"
         end
