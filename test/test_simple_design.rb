@@ -27,4 +27,5 @@ class TestBasicDesign<Test::Unit::TestCase
         gate2.inputs = [1, 0, 1]
         gate3.inputs = [0]
         assert_equal(0, gate4.evaluate)
+    end
 end
