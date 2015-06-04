@@ -23,6 +23,6 @@ class Net
     end
 
     def get_value
-        @driver.eval
+        @driver.evaluate
     end
 end
