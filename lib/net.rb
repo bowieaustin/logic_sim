@@ -13,12 +13,14 @@ class Net
     def set_driver(gate)
         if gate.is_a?Gate
             @driver = gate
+            gate.output = self
         end
     end
 
     def add_load(gate)
         if gate.is_a?Gate
             @loads.push(gate)
+            gate.inputs.push(self)
         end
     end
 

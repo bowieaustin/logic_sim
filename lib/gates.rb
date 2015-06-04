@@ -24,6 +24,9 @@ class And<Gate
             raise "0 or 1 inputs"
         end
         inputs.each do |input|
+            if input.respond_to?("evaluate")
+                input = input.evaluate
+            end
             if input == 0
                 return 0
             end
@@ -39,6 +42,9 @@ class Nand<Gate
             raise "0 or 1 inputs"
         end
         inputs.each do |input|
+            if input.respond_to?("evaluate")
+                input = input.evaluate
+            end
             if input == 0
                 return 1
             end
@@ -54,6 +60,9 @@ class Or<Gate
             raise "0 or 1 inputs"
         end
         inputs.each do |input|
+            if input.respond_to?("evaluate")
+                input = input.evaluate
+            end
             if input == 1
                 return 1
             end
@@ -69,6 +78,9 @@ class Nor<Gate
             raise "0 or 1 inputs"
         end
         inputs.each do |input|
+            if input.respond_to?("evaluate")
+                input = input.evaluate
+            end
             if input == 1
                 return 0
             end
@@ -86,6 +98,9 @@ class Xor<Gate
         num_high = 0
         num_low = 0
         inputs.each do |input|
+            if input.respond_to?("evaluate")
+                input = input.evaluate
+            end
             if input == 0
                 num_low = num_low+1
             else
@@ -108,6 +123,9 @@ class Xnor<Gate
         num_high = 0
         num_low = 0
         inputs.each do |input|
+            if input.respond_to?("evaluate")
+                input = input.evaluate
+            end
             if input == 0
                 num_low = num_low+1
             else
@@ -126,6 +144,9 @@ class Not<Gate
     def evaluate
         if inputs.size != 1
             raise "#{inputs.size} inputs"
+        end
+        if inputs[0].respond_to?("evaluate")
+           inputs[0] = input[0].evaluate
         end
         if inputs[0] == 0
             return 1
