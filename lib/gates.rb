@@ -171,7 +171,7 @@ class Not<Gate
             raise "#{inputs.size} inputs"
         end
         if inputs[0].respond_to?("evaluate")
-           inputs[0] = input.evaluate
+           inputs[0] = inputs[0].evaluate
         end
         if inputs[0] == 0
             return 1
