@@ -11,6 +11,7 @@ class TestBasicDesign<Test::Unit::TestCase
         gate3 = Or.new
         gate1.inputs = [0,1]
         gate2.inputs = [1,1]
+        gate3.inputs = [gate1, gate2]
         assert_equal(gate1.evaluate, 0)
         assert_equal(gate2.evaluate, 1)
         assert_equal(gate3.evaluate, 1)
@@ -22,7 +23,7 @@ class TestBasicDesign<Test::Unit::TestCase
         gate3 = Not.new
         gate4 = Nand.new
         gate4.inputs = [gate1, gate2, gate3]
-        gate4.inputs.push(1)
+        gate4.add_input 1
         gate1.inputs = [0, 1]
         gate2.inputs = [1, 0, 1]
         gate3.inputs = [0]
