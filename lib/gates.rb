@@ -6,6 +6,7 @@ class Gate
     
     def initialize
         @inputs = Array.new
+        @outputs = Array.new
     end
 
     def add_input(input)
