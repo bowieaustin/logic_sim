@@ -10,6 +10,6 @@ class TestNets < Test::Unit::TestCase
         net = Net.new
         net.set_driver and_gate
         and_gate.inputs.concat([1, 1])
-        assert_equal(net.eval, 1)
+        assert_equal(net.get_value, 1)
 	end
 end
