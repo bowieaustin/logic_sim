@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-module Gate
+class Gate
     attr_accessor :inputs
     attr_accessor :output
     
@@ -17,8 +17,7 @@ module Gate
     end
 end
 
-class And
-    include Gate
+class And<Gate
 
     def eval
         if inputs.size < 2
@@ -33,8 +32,7 @@ class And
     end
 end
 
-class Nand
-    include Gate
+class Nand<Gate
 
     def eval
         if inputs.size < 2
@@ -49,8 +47,7 @@ class Nand
     end
 end
 
-class Or
-    include Gate
+class Or<Gate
 
     def eval
         if inputs.size < 2
@@ -65,8 +62,7 @@ class Or
     end
 end
 
-class Nor
-    include Gate
+class Nor<Gate
 
     def eval
         if inputs.size < 2
@@ -81,8 +77,7 @@ class Nor
     end
 end
 
-class Xor
-    include Gate 
+class Xor<Gate
 
     def eval
         if inputs.size < 2
@@ -104,8 +99,7 @@ class Xor
     end
 end
 
-class Xnor
-    include Gate
+class Xnor<Gate
 
     def eval
         if inputs.size < 2
@@ -127,8 +121,7 @@ class Xnor
     end
 end
 
-class Not
-    include Gate
+class Not<Gate
 
     def eval
         if inputs.size != 1

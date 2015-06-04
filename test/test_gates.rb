@@ -92,3 +92,15 @@ class TestGates < Test::Unit::TestCase
         end
     end 
 end
+
+class TestPointers < Test::Unit::TestCase
+
+    def test_different_input_arrays
+        and_gate = And.new
+        nand_gate = Nand.new
+        and_gate.inputs.concat([1,1])
+        assert_raise(RuntimeError){nand_gate.eval}
+        assert_equal(and_gate.eval, 1)
+        assert_raise(RuntimeError){And.new.eval}
+    end
+end
