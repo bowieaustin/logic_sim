@@ -6,6 +6,10 @@ require "test/unit"
 class TestNets < Test::Unit::TestCase
 	
 	def test_eval
-		
+		and_gate = And.new
+        net = Net.new
+        net.set_driver and_gate
+        and_gate.inputs.concat([1, 1])
+        assert_equal(net.eval, 1)
 	end
 end
