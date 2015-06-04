@@ -29,4 +29,19 @@ class TestBasicDesign<Test::Unit::TestCase
         gate3.inputs = [0]
         assert_equal(0, gate4.evaluate)
     end
+
+    def test_basic_design3
+        gate1 = And.new
+        gate2 = Nand.new
+        gate3 = Nor.new
+        gate4 = Not.new
+        gate5 = And.new
+        gate6 = Xor.new
+        gate1.inputs = [0, 1]
+        gate2.inputs = [1, 1]
+        gate3.inputs = [0, gate1]
+        gate4.inputs = [gate2]
+        gate5.inputs = [gate4,gate1]
+        gate6.inputs = [gate5, gate3]
+        assert_equal(1, gate6.evaluate)
 end
