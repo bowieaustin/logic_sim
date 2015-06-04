@@ -19,6 +19,10 @@ class TestBasicDesign<Test::Unit::TestCase
         net2.set_driver gate2
         net1.add_load gate3
         net2.add_load gate3
+        assert_equal(gate1.evaluate, 0)
+        assert_equal(gate2.evaluate, 1)
+        assert_equal(net1.evaluate, 0)
+        assert_equal(net2.evaluate, 1)
         assert_equal(gate3.evaluate, 1)
     end
 end

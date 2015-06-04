@@ -24,7 +24,7 @@ class Net
         end
     end
 
-    def get_value
-        @driver.evaluate
+    def evaluate
+        driver.evaluate
     end
 end
