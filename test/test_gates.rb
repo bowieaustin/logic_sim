@@ -58,7 +58,7 @@ class TestGates < Test::Unit::TestCase
         xor_gate.inputs = [0, 1]
         assert_equal(xor_gate.evaluate, 1)
         xor_gate.inputs = [0, 1, 1, 1, 0]
-        assert_equal(xor_gate.evaluate, 0)
+        assert_equal(xor_gate.evaluate, 1)
         xor_gate.inputs = [0, 0, 1, 1, 1, 0]
         assert_equal(xor_gate.evaluate, 1)
     end
@@ -72,7 +72,7 @@ class TestGates < Test::Unit::TestCase
         xnor_gate.inputs = [0, 1]
         assert_equal(xnor_gate.evaluate, 0)
         xnor_gate.inputs = [0, 1, 1, 1, 0]
-        assert_equal(xnor_gate.evaluate, 1)
+        assert_equal(xnor_gate.evaluate, 0)
         xnor_gate.inputs = [0, 0, 1, 1, 1, 0]
         assert_equal(xnor_gate.evaluate, 0)
     end
