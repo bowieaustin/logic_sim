@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
 
+require_relative "../lib/net"
 require "test/unit"
 
 class TestNets < Test::Unit::TestCase
 	
-	def test_placeholder
-		assert_equal(1, 1)
+	def test_eval
+		
 	end
 end
