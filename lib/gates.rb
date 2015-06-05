@@ -61,9 +61,11 @@ class And<Gate
                 input = input.evaluate
             end
             if input == 0
+                @value = 0
                 return 0
             end
         end
+        @value = 1
         return 1
     end
 end
@@ -71,17 +73,26 @@ end
 class Nand<Gate
 
     def evaluate
+        super
         if inputs.size < 2
             raise "0 or 1 inputs"
+        end
+        inputs.each do |input|
+            if input == 0
+                @value = 1
+                return 1
+            end
         end
         inputs.each do |input|
             if input.respond_to?("evaluate")
                 input = input.evaluate
             end
             if input == 0
+                @value = 1
                 return 1
             end
         end
+        @value = 0
         return 0
     end
 end
@@ -89,17 +100,26 @@ end
 class Or<Gate
 
     def evaluate
+        super
         if inputs.size < 2
             raise "0 or 1 inputs"
+        end
+        inputs.each do |input|
+            if input == 1
+                @value = 1
+                return 1
+            end
         end
         inputs.each do |input|
             if input.respond_to?("evaluate")
                 input = input.evaluate
             end
             if input == 1
+                @value = 1
                 return 1
             end
         end
+        @value = 0
         return 0
     end
 end
@@ -107,17 +127,26 @@ end
 class Nor<Gate
 
     def evaluate
+        super
         if inputs.size < 2
             raise "0 or 1 inputs"
+        end
+        inputs.each do |input|
+            if input == 1
+                @value = 0
+                return 0
+            end
         end
         inputs.each do |input|
             if input.respond_to?("evaluate")
                 input = input.evaluate
             end
             if input == 1
+                @value = 0
                 return 0
             end
         end
+        @value = 1
         return 1
     end
 end
@@ -125,6 +154,7 @@ end
 class Xor<Gate
 
     def evaluate
+        super
         if inputs.size < 2
             raise "0 or 1 inputs"
         end
@@ -143,6 +173,7 @@ class Xor<Gate
                 current_val = 1
             end
         end
+        @value = current_val
         return current_val
     end
 end
@@ -150,6 +181,7 @@ end
 class Xnor<Gate
 
     def evaluate
+        super
         if inputs.size < 2
             raise "0 or 1 inputs"
         end
@@ -169,8 +201,10 @@ class Xnor<Gate
             end
         end
         if current_val == 1
+            @value = 0
             return 0
         end
+        @value = 0
         return 1
     end
 end
@@ -178,6 +212,7 @@ end
 class Not<Gate
 
     def evaluate
+        super
         if inputs.size != 1
             raise "#{inputs.size} inputs"
         end
@@ -185,8 +220,10 @@ class Not<Gate
            inputs[0] = inputs[0].evaluate
         end
         if inputs[0] == 0
+            @value = 1
             return 1
         end
+        @value = 0
         return 0
     end
 end
