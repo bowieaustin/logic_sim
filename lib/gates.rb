@@ -3,10 +3,12 @@
 class Gate
     attr_reader :inputs
     attr_reader :outputs
+    attr_reader :value
     
     def initialize
         @inputs = Array.new
         @outputs = Array.new
+        @value = -1
     end
 
     def add_input(input)
@@ -31,7 +33,9 @@ class Gate
     end
 
     def evaluate
-        raise "Eval not implemented!"
+        if @value != -1
+            return @value
+        end
     end
     
     def raise(error_message)
@@ -42,8 +46,15 @@ end
 class And<Gate
 
     def evaluate
+        super
         if inputs.size < 2
             raise "0 or 1 inputs"
+        end
+        inputs.each do |input|
+            if input == 0
+                @value = 0
+                return 0
+            end
         end
         inputs.each do |input|
             if input.respond_to?("evaluate")
