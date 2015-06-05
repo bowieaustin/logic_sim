@@ -53,4 +53,12 @@ class TestBasicDesign<Test::Unit::TestCase
         gate2.inputs = [0, gate1]
         assert_equal(1, gate1.evaluate)
     end
+
+    def test_inf_loop2
+        gate1 = And.new 
+        gate2 = And.new
+        gate1.inputs = [1, gate2]
+        gate2.inputs = [0, gate1]
+        assert_equal(0, gate1.evaluate)
+    end
 end
