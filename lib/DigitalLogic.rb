@@ -6,7 +6,7 @@ module DigitalLogic
 
         def And(inputs)
             val = inputs.pop
-            return inputs.empty? ? val : (val && And(inputs))
+            return inputs.empty? ? val : (val & And(inputs))
         end
 
         def Nand(inputs)
@@ -60,6 +60,20 @@ module DigitalLogic
 
         def add_gate(name, type)
             @circuit[name] = { :type => type, :inputs => Array.new}
+        end
+    end
+
+    module Analysis
+
+        def analyze(circuit, output)
+            raise "Not yet implemented"
+        end
+    end
+
+    module Parser
+
+        def parse(file)
+            raise "Not yet implemented"
         end
     end
 end
