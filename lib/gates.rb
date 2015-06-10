@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-module DigitalLogic
 class Gate
     attr_reader :inputs
     attr_reader :outputs
@@ -227,5 +226,4 @@ class Not<Gate
         @value = 0
         return 0
     end
-end
 end
