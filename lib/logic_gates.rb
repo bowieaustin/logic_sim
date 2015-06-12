@@ -4,27 +4,27 @@ module DigitalLogic
 
     module Operators
 
-        def And(inputs)
+        def self.And(inputs)
             val = inputs.pop
             return inputs.empty? ? val : (val && And(inputs))
         end
 
-        def Nand(inputs)
+        def self.Nand(inputs)
             val = inputs.pop
             return inputs.empty? ? val : !(val && Nand(inputs))
         end
 
-        def Or(inputs)
+        def self.Or(inputs)
             val = inputs.pop
             return inputs.empty? ? val : (val || Or(inputs))
         end
 
-        def Nor(inputs)
+        def self.Nor(inputs)
             val = inputs.pop
             return inputs.empty? ? val : !(val || Nor(inputs))
         end
 
-        def Xor(inputs)
+        def self.Xor(inputs)
             val = inputs.pop
             if inputs.empty?
                 return val
@@ -33,7 +33,7 @@ module DigitalLogic
             return (!val && return_val) || (val && !return_val)
         end
 
-        def Xnor(inputs)
+        def self.Xnor(inputs)
             val = inputs.pop
             if inputs.empty?
                 return val
@@ -42,7 +42,7 @@ module DigitalLogic
             return (val && return_val) || (!val && !return_val)
         end
 
-        def Not(input)
+        def self.Not(input)
             return !input
         end
     end

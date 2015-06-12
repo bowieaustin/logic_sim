@@ -28,7 +28,8 @@ module DigitalLogic
             if words.size < 2
                 return
             end
-            if DigitalLogic::Operators.instance_methods.include?words[0].to_sym
+            if DigitalLogic::Operators.singleton_methods.include?words[0].to_sym
+                puts words[0]
                 type = words.delete_at 0
             end
             ind = words.index("takes")
