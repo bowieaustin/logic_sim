@@ -1,1 +1,1 @@
-And gate1 takes 0,1,1. Xnor gate2 takes gate1,1,0. gate3 takes 1. Not hey there takes 1,0.
+And gate1 takes 0,1,1. Xnor gate2 takes gate1,0,0. Nor gate3 takes gate2, gate1. Not hey there takes 0. Output gate3.

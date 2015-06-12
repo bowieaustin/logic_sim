@@ -25,6 +25,9 @@ module DigitalLogic
             words = instruction.split(%r{ |,|\.|\n})
             words.delete ""
             puts words.to_s
+            if words[0].eql?"Output"
+                return ["output", words[1], nil]
+            end
             if words.size < 2
                 return
             end
